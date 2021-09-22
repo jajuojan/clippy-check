@@ -278,8 +278,13 @@ See https://github.com/actions-rs/clippy-check/issues/2 for details.`);
             }
         }
 
-        core.debug(`Prepared next annotations bucket, ${annotations.length} size`);
-
+        core.debug(`Prepared next ANNOTATIONS bucket, ${annotations.length} size`);
+        for (var i = 0; i < annotations.length; i++) {
+            core.debug(annotations[i]);
+            core.debug(`Annotation, ${annotations[i]}`);
+            core.debug(annotations[i].path);
+        }
+        
         return annotations;
     }
 
@@ -370,6 +375,16 @@ See https://github.com/actions-rs/clippy-check/issues/2 for details.`);
             title: contents.message.message,
             message: contents.message.rendered,
         };
+
+        core.debug('debug 1');
+        core.info('info 2');
+        core.warning('warning 3');
+        core.error('error 4');
+
+        core.debug(annotation);
+        core.info(annotation);
+        core.warning(annotation);
+        core.error(annotation);
 
         // Omit these parameters if `start_line` and `end_line` have different values.
         if (primarySpan.line_start == primarySpan.line_end) {
